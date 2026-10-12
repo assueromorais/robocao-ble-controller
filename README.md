@@ -14,6 +14,7 @@
   <img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-2.2-7F52FF?logo=kotlin&logoColor=white">
   <img alt="Sem internet" src="https://img.shields.io/badge/permissão%20de%20internet-nenhuma-success">
   <img alt="Testes" src="https://img.shields.io/badge/testes-52%20passando-success">
+  <img alt="Licença MIT" src="https://img.shields.io/badge/licença-MIT-blue">
   <img alt="Google Play" src="https://img.shields.io/badge/Google%20Play-em%20revisão-blue?logo=googleplay&logoColor=white">
 </p>
 
@@ -159,6 +160,8 @@ legalmente. Nenhum código, imagem ou som do app original foi reaproveitado.
 Testado com o **Cão Robô Travesso da FansiKids / UCC Life (versão com garra)**.
 
 Política de privacidade: https://assueromorais.github.io/robocao-privacidade/
+
+Código sob licença [MIT](LICENSE). O modelo de voz Vosk é distribuído pelos autores sob Apache 2.0.
 
 ---
 
