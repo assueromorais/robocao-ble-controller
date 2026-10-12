@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/TrickCard"
+    android:layout_height="80dp"
+    android:layout_margin="4dp">
+
+    <TextView
+        android:id="@+id/step_emoji"
+        style="@style/TrickEmoji"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/step_label"
+        style="@style/TrickLabel"
+        android:layout_marginTop="2dp"
+        android:maxLines="1"
+        android:textSize="11sp" />
+</LinearLayout>

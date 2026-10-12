@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- Topo fixo: status e conexão ficam sempre visíveis nas duas abas -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp">
+
+            <!-- Cabeçalho: ícone, título, detalhe do status e pílula de conexão -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_launcher" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        android:textColor="@color/text_primary"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="2"
+                        android:text="@string/disconnected"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/status_pill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_pill"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp">
+
+                    <View
+                        android:id="@+id/status_dot"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:background="@drawable/dot" />
+
+                    <TextView
+                        android:id="@+id/status_pill_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="@string/pill_off"
+                        android:textColor="@color/text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/connect"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_button_primary"
+                android:drawableStart="@drawable/ic_bluetooth"
+                android:drawableTint="@color/on_primary"
+                android:paddingHorizontal="24dp"
+                android:stateListAnimator="@null"
+                android:text="@string/connect"
+                android:textAllCaps="false"
+                android:textColor="@color/on_primary"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <!-- Dica após 2 falhas seguidas de pareamento -->
+            <LinearLayout
+                android:id="@+id/restart_tip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_tip"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="4dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:importantForAccessibility="no"
+                    android:text="@string/emoji_restart"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/restart_tip"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/restart_tip_close"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/close"
+                    android:gravity="center"
+                    android:text="@string/emoji_close"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="18sp" />
+            </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- Aba Controle -->
+        <ScrollView
+            android:id="@+id/tab_control"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingBottom="112dp">
+
+                <LinearLayout
+                    android:id="@+id/controls"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Andar -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/SectionTitle"
+                            android:layout_width="0dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:layout_weight="1"
+                            android:text="@string/section_move" />
+
+                        <TextView
+                            android:id="@+id/tilt_toggle"
+                            style="@style/ChipButton"
+                            android:text="@string/tilt_off" />
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="272dp"
+                        android:layout_height="272dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/bg_dpad"
+                        android:elevation="2dp">
+
+                        <GridLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:columnCount="3"
+                            android:rowCount="3"
+                            android:useDefaultMargins="true">
+                            <ImageButton android:id="@+id/btn_forward_left" style="@style/DpadDiagonal"
+                                android:layout_row="0" android:layout_column="0" android:layout_gravity="center"
+                                android:rotation="-45" android:src="@drawable/ic_arrow_up"
+                                android:contentDescription="@string/desc_forward_left" />
+                            <ImageButton android:id="@+id/btn_forward" style="@style/DpadButton"
+                                android:layout_row="0" android:layout_column="1" android:layout_gravity="center"
+                                android:rotation="0" android:src="@drawable/ic_chevron_up"
+                                android:contentDescription="@string/desc_forward" />
+                            <ImageButton android:id="@+id/btn_forward_right" style="@style/DpadDiagonal"
+                                android:layout_row="0" android:layout_column="2" android:layout_gravity="center"
+                                android:rotation="45" android:src="@drawable/ic_arrow_up"
+                                android:contentDescription="@string/desc_forward_right" />
+                            <ImageButton android:id="@+id/btn_left" style="@style/DpadButton"
+                                android:layout_row="1" android:layout_column="0" android:layout_gravity="center"
+                                android:rotation="-90" android:src="@drawable/ic_chevron_up"
+                                android:contentDescription="@string/desc_left" />
+                            <ImageButton android:id="@+id/btn_stop"
+                                android:layout_width="72dp" android:layout_height="72dp"
+                                android:layout_row="1" android:layout_column="1" android:layout_gravity="center"
+                                android:background="@drawable/bg_dpad_stop" android:src="@drawable/ic_stop"
+                                android:tint="@color/on_primary" android:contentDescription="@string/desc_stop" />
+                            <ImageButton android:id="@+id/btn_right" style="@style/DpadButton"
+                                android:layout_row="1" android:layout_column="2" android:layout_gravity="center"
+                                android:rotation="90" android:src="@drawable/ic_chevron_up"
+                                android:contentDescription="@string/desc_right" />
+                            <ImageButton android:id="@+id/btn_backward_left" style="@style/DpadDiagonal"
+                                android:layout_row="2" android:layout_column="0" android:layout_gravity="center"
+                                android:rotation="-135" android:src="@drawable/ic_arrow_up"
+                                android:contentDescription="@string/desc_backward_left" />
+                            <ImageButton android:id="@+id/btn_backward" style="@style/DpadButton"
+                                android:layout_row="2" android:layout_column="1" android:layout_gravity="center"
+                                android:rotation="180" android:src="@drawable/ic_chevron_up"
+                                android:contentDescription="@string/desc_backward" />
+                            <ImageButton android:id="@+id/btn_backward_right" style="@style/DpadDiagonal"
+                                android:layout_row="2" android:layout_column="2" android:layout_gravity="center"
+                                android:rotation="135" android:src="@drawable/ic_arrow_up"
+                                android:contentDescription="@string/desc_backward_right" />
+                        </GridLayout>
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/move_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="@string/move_hint"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                    <!-- Garra (só família B) -->
+                    <LinearLayout
+                        android:id="@+id/btn_claw"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/bg_claw"
+                        android:clickable="true"
+                        android:contentDescription="@string/claw"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="20dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:importantForAccessibility="no"
+                            android:text="@string/emoji_claw"
+                            android:textSize="36sp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/claw"
+                                android:textColor="@color/on_primary"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/claw_hint"
+                                android:textColor="@color/on_primary"
+                                android:alpha="0.85"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Truques -->
+                    <TextView
+                        style="@style/SectionTitle"
+                        android:text="@string/section_tricks" />
+
+                    <TextView
+                        android:id="@+id/tricks_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/bg_dashed"
+                        android:padding="12dp"
+                        android:text="@string/tricks_hint"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                    <GridLayout
+                        android:id="@+id/tricks_grid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="3">
+                        <LinearLayout android:id="@+id/btn_shake" style="@style/TrickCard" android:contentDescription="@string/shake">
+                            <TextView style="@style/TrickEmoji" android:text="@string/emoji_shake" />
+                            <TextView style="@style/TrickLabel" android:text="@string/shake" />
+                        </LinearLayout>
+                        <LinearLayout android:id="@+id/btn_exercise" style="@style/TrickCard" android:contentDescription="@string/exercise">
+                            <TextView style="@style/TrickEmoji" android:text="@string/emoji_exercise" />
+                            <TextView style="@style/TrickLabel" android:text="@string/exercise" />
+                        </LinearLayout>
+                        <LinearLayout android:id="@+id/btn_dance" style="@style/TrickCard" android:contentDescription="@string/dance">
+                            <TextView style="@style/TrickEmoji" android:text="@string/emoji_dance" />
+                            <TextView style="@style/TrickLabel" android:text="@string/dance" />
+                        </LinearLayout>
+                        <LinearLayout android:id="@+id/btn_sing" style="@style/TrickCard" android:contentDescription="@string/sing">
+                            <TextView style="@style/TrickEmoji" android:text="@string/emoji_sing" />
+                            <TextView style="@style/TrickLabel" android:text="@string/sing" />
+                        </LinearLayout>
+                        <LinearLayout android:id="@+id/btn_hello" style="@style/TrickCard" android:contentDescription="@string/hello">
+                            <TextView style="@style/TrickEmoji" android:text="@string/emoji_hello" />
+                            <TextView style="@style/TrickLabel" android:text="@string/hello" />
+                        </LinearLayout>
+                        <LinearLayout android:id="@+id/btn_good_boy" style="@style/TrickCard" android:contentDescription="@string/good_boy">
+                            <TextView style="@style/TrickEmoji" android:text="@string/emoji_good_boy" />
+                            <TextView style="@style/TrickLabel" android:text="@string/good_boy" />
+                        </LinearLayout>
+                        <LinearLayout android:id="@+id/btn_cute" style="@style/TrickCard" android:contentDescription="@string/cute">
+                            <TextView style="@style/TrickEmoji" android:text="@string/emoji_cute" />
+                            <TextView style="@style/TrickLabel" android:text="@string/cute" />
+                        </LinearLayout>
+                    </GridLayout>
+                </LinearLayout>
+
+                <!-- Avançado: tipo de robô -->
+                <TextView
+                    android:id="@+id/advanced_toggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="16dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:text="@string/advanced_closed"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/advanced_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/family_title"
+                        android:textColor="@color/text_primary"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/family"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:checkedButton="@+id/family_auto"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/family_auto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/family_auto" />
+
+                        <RadioButton
+                            android:id="@+id/family_a"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/family_a" />
+
+                        <RadioButton
+                            android:id="@+id/family_b"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/family_b" />
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/tested_with"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/privacy_link"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@string/privacy_policy"
+                    android:textColor="@color/primary" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Aba Programar: faixa da sequência no topo, paleta rolável, Executar sempre visível -->
+        <LinearLayout
+            android:id="@+id/tab_program"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/program_intro"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/program_count"
+                    style="@style/SectionTitle"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/program_sequence" />
+
+                <TextView
+                    android:id="@+id/program_undo"
+                    style="@style/ChipButton"
+                    android:text="@string/program_undo" />
+
+                <TextView
+                    android:id="@+id/program_clear"
+                    style="@style/ChipButton"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/program_clear" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/program_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="20dp"
+                    android:background="@drawable/bg_dashed"
+                    android:gravity="center"
+                    android:paddingHorizontal="12dp"
+                    android:text="@string/program_empty"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+
+                <HorizontalScrollView
+                    android:id="@+id/program_strip"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:paddingHorizontal="16dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/program_sequence"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal" />
+                </HorizontalScrollView>
+            </FrameLayout>
+
+            <TextView
+                style="@style/SectionTitle"
+                android:layout_marginHorizontal="20dp"
+                android:layout_width="wrap_content"
+                android:text="@string/program_palette" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="16dp"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/program_palette_empty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="4dp"
+                        android:text="@string/program_palette_empty"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                    <GridLayout
+                        android:id="@+id/program_palette"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="4" />
+                </LinearLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="10dp">
+
+                <Button
+                    android:id="@+id/program_run"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@drawable/bg_button_run"
+                    android:stateListAnimator="@null"
+                    android:text="@string/program_run"
+                    android:textAllCaps="false"
+                    android:textColor="@color/on_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/program_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Microfone flutuante (só na aba Controle) e balão com o que foi ouvido -->
+        <LinearLayout
+            android:id="@+id/voice_fab_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/voice_heard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_bubble"
+                android:elevation="6dp"
+                android:maxWidth="220dp"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="8dp"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+            <FrameLayout
+                android:layout_width="84dp"
+                android:layout_height="84dp">
+
+                <View
+                    android:id="@+id/mic_halo"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:alpha="0"
+                    android:background="@drawable/bg_mic_halo" />
+
+                <ImageButton
+                    android:id="@+id/voice_toggle"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_mic"
+                    android:contentDescription="@string/voice_start"
+                    android:elevation="8dp"
+                    android:src="@drawable/ic_mic"
+                    android:tint="@color/on_primary" />
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Abas -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/surface"
+        android:elevation="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tab_btn_control"
+            style="@style/TabButton"
+            android:text="@string/tab_control" />
+
+        <TextView
+            android:id="@+id/tab_btn_program"
+            style="@style/TabButton"
+            android:text="@string/tab_program" />
+    </LinearLayout>
+</LinearLayout>

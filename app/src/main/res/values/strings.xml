@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Robot Dog</string>
+    <string name="connect">Connect to robot</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="disconnected">Turn on the robot and tap Connect</string>
+    <string name="connected">Ready to play · %1$s</string>
+    <string name="permission_denied">Without Bluetooth permission the app can\'t talk to the robot.</string>
+    <string name="family_auto">Automatic</string>
+    <string name="family_a">Type A</string>
+    <string name="family_b">Type B</string>
+    <string name="section_move">Move</string>
+    <string name="section_tricks">Tricks</string>
+    <string name="shake">Paw</string>
+    <string name="exercise">Exercise</string>
+    <string name="dance">Dance</string>
+    <string name="sing">Sing</string>
+    <string name="hello">Hi!</string>
+    <string name="good_boy">Good boy!</string>
+    <string name="cute">Cutie!</string>
+    <string name="voice_start">Tap to talk</string>
+    <string name="voice_stop">Listening… tap to stop</string>
+    <string name="voice_loading">Getting voice recognition ready…</string>
+    <string name="voice_listening">Listening…</string>
+    <string name="voice_heard_command">I heard: \"%1$s\"</string>
+    <string name="voice_heard_unknown">I heard: \"%1$s\" (not a command)</string>
+    <string name="voice_permission_denied">Voice control needs microphone permission.</string>
+    <string name="bluetooth_off">Bluetooth is off. Turn it on to connect to the robot.</string>
+    <string name="desc_forward">Move forward</string>
+    <string name="desc_backward">Move back</string>
+    <string name="desc_left">Turn left</string>
+    <string name="desc_right">Turn right</string>
+    <string name="desc_forward_left">Forward left</string>
+    <string name="desc_forward_right">Forward right</string>
+    <string name="desc_backward_left">Back left</string>
+    <string name="desc_backward_right">Back right</string>
+    <string name="desc_stop">Stop</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="move_hint">Hold an arrow to move · release to stop</string>
+    <string name="pill_off">Offline</string>
+    <string name="pill_searching">Searching</string>
+    <string name="pill_on">Connected</string>
+    <string name="advanced_closed">Advanced  ▾</string>
+    <string name="advanced_open">Advanced  ▴</string>
+    <string name="family_title">Robot type (switch if it doesn\'t pair)</string>
+    <string name="claw">Claw</string>
+    <string name="claw_hint">Tap to open or close</string>
+    <string name="panel_lie">Lie down</string>
+    <string name="panel_sit">Sit</string>
+    <string name="panel_stretch">Stretch</string>
+    <string name="panel_back_paw">Back paw</string>
+    <string name="panel_crawl">Crawl</string>
+    <string name="panel_affection">Cuddle</string>
+    <string name="panel_bark">Bark</string>
+    <string name="panel_turbo">Turbo</string>
+    <string name="panel_patrol">Patrol</string>
+    <string name="panel_story">Story</string>
+    <string name="panel_music">Music</string>
+    <string name="panel_dance">Hula hoop</string>
+    <string name="panel_swim">Swim</string>
+    <string name="panel_walk_upright">Walk upright</string>
+    <string name="panel_pause">Pause</string>
+    <string name="step_forward">Forward</string>
+    <string name="step_backward">Back</string>
+    <string name="step_left">Left</string>
+    <string name="step_right">Right</string>
+    <string name="step_spin_left">Spin ←</string>
+    <string name="step_spin_right">Spin →</string>
+    <string name="tab_control">🎮  Control</string>
+    <string name="tab_program">🧩  Program</string>
+    <string name="program_intro">Tap the actions in order (up to 16). Then tap Run and the robot does it all by itself.</string>
+    <string name="program_sequence">Sequence %1$d/%2$d</string>
+    <string name="program_undo">↶ Undo</string>
+    <string name="program_clear">Clear</string>
+    <string name="program_empty">No steps yet — pick an action below</string>
+    <string name="program_run">▶  Run program</string>
+    <string name="program_palette">Actions</string>
+    <string name="program_palette_empty">Connect to the robot once to see your model\'s actions.</string>
+    <string name="program_need_connection">Connect to the robot to run.</string>
+    <string name="program_full">16-step limit reached.</string>
+    <string name="program_sending">Sending step %1$d of %2$d…</string>
+    <string name="program_sent">Done! The robot is running the program.</string>
+    <string name="program_step_desc">Step %1$d: %2$s</string>
+    <string name="tricks_hint">Connect to the robot once to unlock all of your model\'s actions (lie down, crawl, swim, claw…).</string>
+    <string name="restart_tip"><b>Still not connecting?</b> Turn the robot off, wait 5 seconds and turn it back on. Then tap Connect.</string>
+    <string name="close">Close</string>
+    <string name="tested_with"><b>Tested with:</b> FansiKids / UCC Life naughty robot dog (claw version). Independent, unofficial app, not affiliated with the manufacturers.</string>
+    <string name="searching">Searching for robot (%1$s)…</string>
+    <string name="connect_first">Tap \"Connect to robot\" first</string>
+    <string name="voice_wait_program">Wait for the program to finish…</string>
+    <string name="tilt_off">📱 Tilt</string>
+    <string name="tilt_on">📱 Tilting · stop</string>
+    <string name="tilt_hint">Tilt the phone to steer · hold it level to stop</string>
+    <string name="tilt_unavailable">This phone has no motion sensor.</string>
+    <string name="disconnect_confirm">Disconnect from the robot?</string>
+    <string name="cancel">Cancel</string>
+    <string name="ble_advertise_unsupported">This phone can\'t send Bluetooth (BLE) advertisements.</string>
+    <string name="robot_no_reply">The robot didn\'t answer. Turn it on, move closer and try again.</string>
+    <string name="scan_failed">Couldn\'t search for the robot (error %1$d)</string>
+    <string name="advertise_failed">Bluetooth transmission failed (error %1$d)</string>
+    <string name="voice_model_failed">Couldn\'t load the voice model: %1$s</string>
+    <string name="voice_mic_failed">Couldn\'t open the microphone: %1$s</string>
+    <string name="voice_recognition_failed">Recognition error: %1$s</string>
+    <string name="privacy_policy_url" translatable="false">https://assueromorais.github.io/robocao-privacidade/</string>
+    <string name="emoji_shake" translatable="false">🐾</string>
+    <string name="emoji_exercise" translatable="false">🏋️</string>
+    <string name="emoji_dance" translatable="false">💃</string>
+    <string name="emoji_sing" translatable="false">🎵</string>
+    <string name="emoji_hello" translatable="false">👋</string>
+    <string name="emoji_good_boy" translatable="false">⭐</string>
+    <string name="emoji_cute" translatable="false">💖</string>
+    <string name="emoji_claw" translatable="false">🦀</string>
+    <string name="emoji_restart" translatable="false">🔄</string>
+    <string name="emoji_close" translatable="false">✕</string>
+</resources>

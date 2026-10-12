@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/TrickCard"
+    android:layout_height="88dp">
+
+    <TextView
+        android:id="@+id/panel_emoji"
+        style="@style/TrickEmoji"
+        android:textSize="26sp" />
+
+    <TextView
+        android:id="@+id/panel_label"
+        style="@style/TrickLabel"
+        android:textSize="13sp" />
+</LinearLayout>

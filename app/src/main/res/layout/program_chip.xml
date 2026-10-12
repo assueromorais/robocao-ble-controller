@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="76dp"
+    android:layout_height="84dp"
+    android:layout_marginHorizontal="4dp"
+    android:background="@drawable/bg_trick"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/step_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_secondary"
+        android:textSize="11sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/step_emoji"
+        style="@style/TrickEmoji"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/step_label"
+        style="@style/TrickLabel"
+        android:layout_marginTop="0dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingHorizontal="4dp"
+        android:textSize="11sp" />
+</LinearLayout>

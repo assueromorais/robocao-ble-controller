@@ -1,0 +1,10 @@
+.gradle/
+build/
+local.properties
+keystore.properties
+*.jks
+.idea/
+*.iml
+
+# Modelo de voz: baixado por scripts/download-voice-model.sh
+app/src/main/assets/model-pt/
